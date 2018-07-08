@@ -1,38 +1,37 @@
-import { Map } from 'immutable';
+import { Iterable, Map } from 'immutable';
 import { Reducer as ReduxReducer } from 'redux';
 
 import Store from '../Store';
-import { Action, IterableState } from '../types';
+import { Action, MapState } from '../types';
 
-export declare type ReducerFn<S> = (state: IterableState<S>, payload: any) => IterableState<S>;
-
-export default class Reducer<StateType> {
+export default class Reducer<StateType, ST = MapState<StateType>> {
     public name: string;
     protected store: Store;
+    protected defaultState: ST;
 
     private reducerMethods: {
-        [key: string]: ReducerFn<StateType>;
-    };
+        [key: string]: (state: ST, payload: any) => ST;
+    } = {};
 
-    constructor(name: string, store: Store) {
+    constructor(name: string, store: Store, defaultState?: ST) {
         Object.defineProperty(this, 'name', {
             value: name,
             writable: false,
         });
         this.store = store;
+        this.defaultState = defaultState || Iterable({}) as any; // todo: this might be bad :/
     }
 
-    public registerReducer(key: string, fn: ReducerFn<StateType>) {
+    public register(key: string, fn: (state: ST, payload: any) => ST) {
         this.reducerMethods[key] = fn;
     }
 
-    public reduce: ReduxReducer = (previousState: Map<string, Reducer<any>>, action: Action) => {
-        if (!previousState.has(this.name) || !this.reducerMethods.hasOwnProperty(action.type)) {
-            return previousState;
+    public reduce: ReduxReducer = (previousState: ST, action: Action) => {
+        const nextState: ST = previousState || this.defaultState;
+        if (!this.reducerMethods.hasOwnProperty(action.type)) {
+            return nextState;
         } else {
-            return previousState.updateIn([this.name], (value: IterableState<StateType>) =>
-                this.reducerMethods[action.type](value, action.payload),
-            );
+            return this.reducerMethods[action.type](nextState, action.payload);
         }
     }
 }

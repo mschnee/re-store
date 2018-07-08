@@ -3,6 +3,7 @@
         "target": "esnext",
         "module": "commonjs",
         "outDir": "dist/esnext",
+        "sourceMap": true,
         "experimentalDecorators": true
     },
     "include": [
