@@ -1,10 +1,13 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
-import { toJs } from 'transit-immutable-js';
+import { toJSON } from 'transit-immutable-js';
 
-import { Store } from '../../../src';
+import { Store } from '../../../../src';
 
-import IncDecReducer from './reducers/IncDecReducer';
+import IncDecReducer from '../reducers/IncDecReducer';
 
+interface LocalServerResponse extends ServerResponse {
+    locals?: any;
+}
 
 function setupState([req, res]) {
     return new Promise((resolve) => {
@@ -22,18 +25,19 @@ function doSomeIncDec([req, res]) {
     });
 }
 
-function renderStateToString(state) {
-    return toJs(state);
-}
-
-const server = createServer((req: IncomingMessage, res: ServerResponse) => {
-    setupState([req, res]).then(doSomeIncDec).then(()=> {
+const server = createServer((req: IncomingMessage, res: LocalServerResponse) => {
+    setupState([req, res]).then(doSomeIncDec).then(() => {
         res.setHeader('Content-Type', 'text/html');
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(`
         <!doctype html>
             <html>
                 <body>
+                    <script type="module">
+                        import('/client.js').then(m => {
+                            m(${toJSON(res.locals.store.getState())})
+                        });
+                    </script>
                 </body>
             </html>
         `);

@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "composite": true,
+        "module": "commonjs",
+        "lib":[
+            "es2018"
+        ],
+        "outDir": "../dist/server"
+    }, "files": [
+        "index.ts"
+    ],
+    "references": [
+        { "path": "../../../../" }
+    ]
+}
