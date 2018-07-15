@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - "lts/carbon"
+cache:
+  directories:
+  - node_modules
+sudo: false
+branches:
+  only:
+    - master
+    - release/*
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - npm test
+  - npm run lint
+  - npm run build
+after_script:
+  - codecov
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT -t lcov -r $CC_TEST_REPORTER_ID

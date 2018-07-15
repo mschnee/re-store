@@ -2,12 +2,19 @@
   "name": "re-store",
   "version": "0.0.1",
   "description": "Opinionated redux state manager.",
-  "main": "index.js",
+  "main": "dist/es6/index.js",
+  "module": "dist/esnext/index.js",
+  "typings": "dist/typings/index.d.ts",
   "scripts": {
     "test": "nyc mocha",
-    "build": "tsc -p ."
+    "lint": "tslint -p .",
+    "build": "rimraf ./dist && npm run build:esnext && npm run build:es6",
+    "build:esnext": "tsc -p . --target esnext --outDir ./dist/esnext --module esnext --declaration --declarationDir ./dist/typings",
+    "build:es6": "tsc -p . --target es6 --outDir ./dist/es6 --module commonjs",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
-  "author": "",
+  "author": "mschnee",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.1.4",
@@ -15,6 +22,8 @@
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",
+    "rimraf": "^2.6.2",
+    "snyk": "^1.88.2",
     "ts-node": "^7.0.0",
     "tslint": "^5.10.0",
     "typescript": "^2.9.2"
