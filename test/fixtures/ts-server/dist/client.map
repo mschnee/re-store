@@ -1,0 +1,1 @@
+{"version":3,"sources":["client.ts"],"names":[],"mappings":";;AAIA,IAAA,EAAA,UAAA,GAJA,SAAA,EAA6B,GACjB,QAAA,IAAI,GAGhB,QAAA,YAAA,EAJA,QAAA,QAAA,EAIA,EAAO,MAAQ","file":"client.map","sourceRoot":"../client","sourcesContent":["export default function load(preloadState) {\n    console.log(preloadState);\n}\n\nglobal.setup = load;"]}

@@ -1,7 +1,5 @@
 import { Map } from 'immutable';
 import { createStore as createReduxStore, Reducer as ReduxReducer, Store as ReduxStore } from 'redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
-import { devToolsEnhancer as remoteDevToolsEnhancer } from 'remote-redux-devtools';
 
 import Reducer from '../Reducer';
 import { Action } from '../types';
@@ -23,6 +21,8 @@ export interface StoreOptions {
 }
 
 declare var process: any;
+declare var require: any;
+
 function isNode() {
     return Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]';
 
@@ -71,10 +71,16 @@ export default class Store {
     }
 
     private createStore(preloadState: any) {
-        if (this.isDev && !this.isNode) {
-            const devTools = this.useRemoteDevtools ? remoteDevToolsEnhancer : devToolsEnhancer;
-            return createReduxStore(this.reduce, preloadState, devTools({}));
-        } else {
+        try {
+            const rde = require('redux-devtools-extension');
+            const rrd  = require('remote-redux-devtools');
+            if (this.isDev && !this.isNode) {
+                const devTools = this.useRemoteDevtools ? rrd.devToolsEnhancer : rde.devToolsEnhancer;
+                return createReduxStore(this.reduce, preloadState, devTools({}));
+            } else {
+                return createReduxStore(this.reduce, preloadState);
+            }
+        } catch (e) {
             return createReduxStore(this.reduce, preloadState);
         }
     }
