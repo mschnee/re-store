@@ -7,12 +7,10 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug Fixture",
-            "program": "${workspaceFolder}/test/fixtures/ts-server/server/index.ts",
-            "cwd": "${workspaceFolder}/test/fixtures/ts-server/",
-            "outFiles": [
-                "${workspaceFolder}/test/fixtures/ts-server/dist/server/server/index.js"
-            ],
+            "name": "Launch Test Fixture",
+            "args": ["${workspaceFolder}/test/fixtures/ts-server/server/index.ts"],
+            "runtimeArgs": ["-r", "ts-node/register"],
+            "cwd": "${workspaceFolder}/test/fixtures/ts-server/server/",
             "sourceMaps": true
         }
     ]

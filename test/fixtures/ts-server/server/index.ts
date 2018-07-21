@@ -1,3 +1,5 @@
+import * as fs from 'fs';
+import * as path from 'path';
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { toJSON } from 'transit-immutable-js';
 
@@ -26,22 +28,29 @@ function doSomeIncDec([req, res]) {
 }
 
 const server = createServer((req: IncomingMessage, res: LocalServerResponse) => {
-    setupState([req, res]).then(doSomeIncDec).then(() => {
-        res.setHeader('Content-Type', 'text/html');
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(`
-        <!doctype html>
-            <html>
-                <body>
-                    <script type="module">
-                        import('/client.js').then(m => {
-                            m(${toJSON(res.locals.store.getState())})
-                        });
-                    </script>
-                </body>
-            </html>
-        `);
-    });
+    if (req.url.endsWith('.js') && fs.existsSync(path.join(process.cwd(), '..', 'dist', req.url))) {
+        res.setHeader('Content-Type', 'text/javascript');
+        fs.createReadStream(path.join(process.cwd(), '..', 'dist', req.url)).pipe(res);
+    } else {
+        setupState([req, res]).then(doSomeIncDec).then(() => {
+            res.setHeader('Content-Type', 'text/html');
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(`
+            <!doctype html>
+                <html>
+                    <body>
+                        <div id="app"/>
+                        <script src="/client.js"></script>
+                        <script>
+                            (() => {
+                                window.setup && window.setup(${toJSON(res.locals.store.getState())});
+                            })()
+                        </script>
+                    </body>
+                </html>
+            `);
+        });
+    }
 });
 
 server.listen(8030, '127.0.0.1', () => {
