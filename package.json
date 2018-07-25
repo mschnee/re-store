@@ -8,7 +8,7 @@
   "scripts": {
     "test": "mister do re-store --tasks test",
     "lint": "mister do re-store --tasks lint",
-    "build": "mister do re-store --tasks build",
+    "build": "mister do re-store example-ts-server --tasks build",
     "snyk-protect": "mister do re-store --tasks prepare",
     "prepare": "mister do re-store --tasks prepare"
   },
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
+    "@types/node": "^10.5.3",
     "chai": "^4.1.2",
     "cross-env": "^5.2.0",
     "express": "^4.16.3",
@@ -24,11 +25,13 @@
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",
     "parcel": "^1.9.7",
-    "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
+    "react": "^16.4.1",
     "rimraf": "^2.6.2",
     "snyk": "^1.89.0",
+    "transit-immutable-js": "^0.7.0",
+    "transit-js": "^0.8.861",
     "ts-node": "^7.0.0",
     "tslint": "^5.11.0",
     "typescript": "^2.9.2"
