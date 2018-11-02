@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Opinionated redux state manager.",
   "scripts": {
+    "clean": "mister clean",
     "test": "mister do-all !test",
     "lint": "mister do-all !lint",
     "build": "mister do-all build",

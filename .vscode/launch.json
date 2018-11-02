@@ -7,11 +7,21 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Test Fixture",
-            "args": ["${workspaceFolder}/test/fixtures/ts-server/server/index.ts"],
-            "runtimeArgs": ["-r", "ts-node/register"],
-            "cwd": "${workspaceFolder}/test/fixtures/ts-server/server/",
-            "sourceMaps": true
+            "name": "Test current file",
+            "windows": {
+                "program":"${workspaceRoot}\\node_modules\\ava\\profile.js"
+            },
+            "args": [
+              "${file}"
+            ],
+            "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+            "skipFiles": [
+                "<node_internals>/**/*.js"
+            ],
+            "env": {
+                "TS_NODE_IGNORE": "/(?<!packages/)node_modules/"
+            },
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
