@@ -4,7 +4,7 @@
   "description": "Opinionated redux state manager.",
   "scripts": {
     "clean": "mister clean",
-    "test": "mister do-all !test",
+    "test": "mister do-all !test --stdio",
     "lint": "mister do-all !lint",
     "build": "mister do-all build",
     "prepare": "mister do-all prepare",
@@ -16,6 +16,7 @@
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.1",
+    "ava": "^1.0.0-rc.1",
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
@@ -40,7 +41,6 @@
     "typescript": "^3.1.5"
   },
   "dependencies": {
-    "ava": "^1.0.0-rc.1",
     "immutable": "^4.0.0-rc.12",
     "redux": "^4.0.1"
   }
