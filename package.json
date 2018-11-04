@@ -8,7 +8,7 @@
     "lint": "mister do-all !lint",
     "build": "mister do-all build",
     "prepare": "mister do-all prepare",
-    "coverage": "istanbul-merge --out .nyc_output/raw.json packages/node_modules/**/.nyc_output/*.json && nyc report --reporter=lcov --reporter=html --reporter=text-summary"
+    "coverage": "istanbul-merge --base packages/node_modules --out .nyc_output/raw.json packages/node_modules/@re-store/**/.nyc_output/*.json && nyc report --reporter=lcov --reporter=html --reporter=text-summary"
   },
   "author": "mschnee",
   "license": "MIT",
@@ -20,6 +20,7 @@
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
+    "istanbul-combine": "^0.3.0",
     "istanbul-merge": "^1.1.1",
     "mister": "^1.5.3",
     "mocha": "^5.2.0",
