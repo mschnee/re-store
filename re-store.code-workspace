@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "Workspace"
+		},
+		{
+			"path": "./packages/node_modules/@re-store/store",
+			"name": "Store"
+		},
+		{
+			"path": "./packages/node_modules/@re-store/reducer",
+			"name": "Reducer"
+		},
+		{
+			"path": "./packages/node_modules/@re-store/types",
+			"name": "Types"
+		}
+		,
+		{
+			"path": "./packages/node_modules/@re-store/decorators",
+			"name": "Decorators"
+		},
+		{
+			"path": "./packages/node_modules/example-ts-server",
+			"name": "Example: TS Server"
+		}
+	],
+	"settings": {
+		"terminal.integrated.env.windows": {
+			"Path": "${workspaceFolder:Workspace}\\node_modules\\.bin;${env:Path}"
+		},
+		"terminal.integrated.env.osx": {
+			"PATH": "${env:PATH}:${workspaceFolder:Workspace}/node_modules/.bin"
+		},
+		"terminal.integrated.env.linux": {
+			"PATH": "${env:PATH}:${workspaceFolder:Workspace}/node_modules/.bin"
+		}
+	}
+}
