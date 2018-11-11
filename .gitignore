@@ -5,3 +5,4 @@
 /coverage
 .cache
 .mister
+package/node_modules/**/dist
