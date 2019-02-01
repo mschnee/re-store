@@ -1,7 +1,7 @@
 import * as expect from 'expect';
 
 // tslint:disable no-unused-expression
-import Store from '../../Store/Store';
+import Store from '../../';
 
 import IncDecReducer from './IncDecReducer';
 import TestReducer from './TestReducer';

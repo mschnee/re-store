@@ -10,14 +10,16 @@ export class Reducer<StateType, ST = MapState<StateType>> implements IReducer<St
     public defaultState: ST;
 
     private reducerMethods: Map<string | symbol, reducerFn<ST>>;
-    public [METADATA]: Map< string | symbol, reducerFn<ST>> = new Map();
+
+    /* Only type this - don't set the value, the decorators are applied to this.prototype */
+    public [METADATA]: Map< string | symbol, reducerFn<ST>>;
 
     constructor(store: IStore, defaultState?: ST) {
         this.store = store;
         this.defaultState = defaultState || ImmutableMap({}) as any; // todo: this might be bad :/
         this.reducerMethods = new Map();
 
-        if (this.hasOwnProperty(METADATA)) {
+        if (this[METADATA] && this[METADATA].size) {
             this[METADATA].forEach((v: reducerFn<ST>, k: string | symbol) => {
                 this.register(k, v);
             });

@@ -13,7 +13,7 @@ export interface TestReducerState {
 export default class TestReducer extends BaseReducer<TestReducerState> {
     @Reducer('increment')
     public increment(state: any, payload: any) {
-        if (!state) {
+        if (!state || !state.has('num')) {
             return ImmutableMap({
                 num: 1
             });
@@ -24,7 +24,7 @@ export default class TestReducer extends BaseReducer<TestReducerState> {
 
     @Reducer('decrement')
     public decrement(state: any, payload: any) {
-        if (!state) {
+        if (!state || !state.has('num')) {
             return ImmutableMap({
                 num: 1
             });
@@ -35,7 +35,7 @@ export default class TestReducer extends BaseReducer<TestReducerState> {
 
     @Reducer(DOUBLE)
     public double(state: any, payload: any) {
-        if (!state) {
+        if (!state || !state.has('num')) {
             return ImmutableMap({
                 num: 2
             });

@@ -6,7 +6,6 @@ module.exports = {
   testRegex: "/__tests__/.*\\.(test|spec)\\.tsx?$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   collectCoverage: true,
-  mapCoverage: true,
   collectCoverageFrom: [
     "**/*.ts",
     "!**/__tests__/**",

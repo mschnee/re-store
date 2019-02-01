@@ -8,7 +8,6 @@ export default class TestReducer extends Reducer<any> {
     }
 
     public testHandler(state: any) {
-        console.log('in test handler')
         return state;
     }
 
