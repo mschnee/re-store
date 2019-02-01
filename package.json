@@ -15,15 +15,15 @@
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.12.18",
-    "ava": "^1.1.0",
+    "@types/node": "^10.12.21",
+    "ava": "^1.2.0",
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "inspect-process": "^0.5.0",
     "iron-node": "^3.0.23",
     "istanbul-merge": "^1.1.1",
-    "mister": "^1.5.4",
+    "mister": "^1.5.5",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0",
     "parcel": "^1.11.0",
@@ -31,7 +31,7 @@
     "react-dom": "^16.7.0",
     "react-redux": "^5.1.1",
     "rimraf": "^2.6.3",
-    "snyk": "^1.122.3",
+    "snyk": "^1.124.0",
     "transit-immutable-js": "^0.7.0",
     "transit-js": "^0.8.861",
     "ts-node": "^7.0.1",
@@ -40,7 +40,7 @@
     "tslint-config-standard": "^8.0.1",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.2.4"
+    "typescript": "^3.3.1"
   },
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
