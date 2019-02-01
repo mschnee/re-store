@@ -15,7 +15,6 @@
   "license": "ISC",
   "dependencies": {
     "redux": "*",
-    "@re-store/store": "*",
     "transit-immutable-js": "*",
     "transit-js": "*",
     "ts-node": "*"

@@ -1,34 +1,34 @@
-// tslint:disable no-unused-expression
-import test from 'ava';
+import * as expect from 'expect';
 
+// tslint:disable no-unused-expression
 import Store from '../../Store/Store';
 
 import IncDecReducer from './IncDecReducer';
 import TestReducer from './TestReducer';
 
-test('Should construct', (t) => {
+test('Should construct', () => {
     const s = new Store();
-    t.truthy(s);
+    expect(s).toBeTruthy();
 });
 
-test('Should register a TestAction', (t) => {
+test('Should register a TestAction', () => {
     const s = new Store();
     s.registerReducer('test', TestReducer);
     s.dispatch('TestAction');
-    t.truthy(s.getState('test'));
+    expect(s.getState('test')).toBeTruthy();
 });
 
-test('Should accept two reducers', (t) => {
+test('Should accept two reducers', () => {
     const s = new Store();
     s.registerReducer('test', TestReducer);
     s.registerReducer('incdec', IncDecReducer);
     s.dispatch('TestAction');
     s.dispatch('INCREMENT');
-    t.truthy(s.getState('test'));
-    t.is(s.getState('incdec').get('num'), 1);
+    expect(s.getState('test')).toBeTruthy();
+    expect(s.getState('incdec').get('num')).toBe(1);
 });
 
-test('Should accept reducers using a symbol', (t) => {
+test('Should accept reducers using a symbol', () => {
     const testReducerKey = Symbol('Test Reducer Key');
     const incdecReducerKey = Symbol('Test Reducer Key');
     const s = new Store();
@@ -37,6 +37,6 @@ test('Should accept reducers using a symbol', (t) => {
 
     s.dispatch('TestAction');
     s.dispatch('INCREMENT');
-    t.truthy(s.getState(testReducerKey));
-    t.is(s.getState(incdecReducerKey).get('num'), 1);
+    expect(s.getState(testReducerKey)).toBeTruthy();
+    expect(s.getState(incdecReducerKey).get('num')).toBe(1);
 });

@@ -1,5 +1,5 @@
 
-import { METADATA } from '@re-store/types';
+import { METADATA } from '../../types/metadata';
 
 export default function Reducer<State>(reducerKey: string | symbol) {
     return function(target: any, key: string | symbol, descriptor: PropertyDescriptor) {

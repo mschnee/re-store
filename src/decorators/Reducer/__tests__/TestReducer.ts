@@ -1,6 +1,6 @@
 import { Map as ImmutableMap } from 'immutable';
 
-import { default as BaseReducer } from '@re-store/reducer';
+import { default as BaseReducer } from '../../../reducer';
 
 import Reducer from '../../Reducer/Reducer';
 

@@ -1,0 +1,1 @@
+export const METADATA: unique symbol = Symbol('@re-store metadata');

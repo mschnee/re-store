@@ -1,4 +1,4 @@
-import Reducer from '@re-store/reducer';
+import Reducer from '../../../reducer';
 
 export default class TestReducer extends Reducer<any> {
     constructor(store: any) {

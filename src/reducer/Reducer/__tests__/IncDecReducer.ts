@@ -1,7 +1,7 @@
 import { Map as ImmutableMap } from 'immutable';
 
 import Reducer from '../../Reducer';
-import { IStore, MapState } from '@re-store/types';
+import { IStore, MapState } from '../../../types';
 
 interface IncDecState {
     num: number;

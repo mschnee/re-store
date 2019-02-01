@@ -1,7 +1,7 @@
 import { Map as ImmutableMap } from 'immutable';
 import { createStore as createReduxStore, Reducer as ReduxReducer, Store as ReduxStore } from 'redux';
 
-import { Action, IReducer, IStore, ReducerConstructor } from '@re-store/types';
+import { Action, IReducer, IStore, ReducerConstructor } from '../../types';
 
 export interface StoreOptions {
     redux?: ReduxStore;

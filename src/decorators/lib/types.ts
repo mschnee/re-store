@@ -1,6 +1,4 @@
-import { ReducerConstructor } from '@re-store/types';
-
-export const METADATA = Symbol('@re-store metadata');
+import { METADATA } from '../../types/metadata';
 
 export declare type SimpleClass<T = {}> = new () => T;
 

@@ -35,5 +35,3 @@ export interface IStore {
     dispatch(type: DispatchKey, payload?: any): void;
     getReduxStore(): ReduxStore;
 }
-
-export const METADATA: unique symbol = Symbol('@re-store metadata');

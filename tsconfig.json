@@ -5,6 +5,14 @@
         "moduleResolution": "node",
         "target": "es2018",
         "noImplicitAny": true,
-        "experimentalDecorators": true
-    }
+        "experimentalDecorators": true,
+        "outDir": "dist/cjs"
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "src/**/__tests__/**",
+        "**/node_modules/**"
+    ]
 }

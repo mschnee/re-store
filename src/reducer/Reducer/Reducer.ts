@@ -1,6 +1,7 @@
 import { Map as ImmutableMap } from 'immutable';
 
-import { Action, MapState, IStore, IReducer, METADATA } from '@re-store/types';
+import { Action, MapState, IStore, IReducer } from '../../types';
+import { METADATA } from '../../types/metadata';
 
 declare type  reducerFn<ST> = (state: ST, payload: any) => ST;
 
