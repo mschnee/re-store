@@ -2,7 +2,7 @@ import * as expect from 'expect';
 
 import TestReducer, { DOUBLE } from './TestReducer';
 
-test('that it works', () => {
+test('A BaseReducer subclass decorated with @Reducer methods works', () => {
     const r = new TestReducer(null);
     const initialState = r.reduce(null, {type: 'increment', payload: null});
     expect(initialState.get('num')).toBe(1);

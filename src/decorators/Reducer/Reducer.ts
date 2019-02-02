@@ -1,5 +1,5 @@
 
-import { METADATA } from '../../types/metadata';
+import { REDUCER_KEY } from '../../types/internal';
 
 export default function Reducer<State>(reducerKey: string | symbol) {
     return function(target: any, key: string | symbol, descriptor: PropertyDescriptor) {
@@ -7,9 +7,9 @@ export default function Reducer<State>(reducerKey: string | symbol) {
             descriptor = Object.getOwnPropertyDescriptor(target, key);
         }
 
-        if (!target.hasOwnProperty(METADATA)) {
-            (target as any)[METADATA] = new Map();
+        if (!target.hasOwnProperty(REDUCER_KEY)) {
+            (target as any)[REDUCER_KEY] = new Map();
         }
-        (target as any)[METADATA].set(reducerKey, descriptor.value);
+        (target as any)[REDUCER_KEY].set(reducerKey, descriptor.value);
     }
 }
