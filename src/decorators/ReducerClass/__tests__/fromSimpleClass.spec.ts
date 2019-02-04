@@ -24,6 +24,7 @@ class SimpleClass {
 }
 
 test('A class decorated with @ReducerClass is a reducer.', () => {
+    // this sucks:
     const t: SimpleClass & BaseReducer<StateType> = new SimpleClass() as SimpleClass & BaseReducer<StateType>;
 
     const firstState = t.reduce(null, null);
