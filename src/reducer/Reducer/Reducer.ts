@@ -1,18 +1,17 @@
 import { Map as ImmutableMap } from 'immutable';
 
-import { Action, MapState, IStore, IReducer } from '../../types';
+import { Action, MapState, IStore, IReducer, ReducerMethod } from '../../types';
 import { REDUCER_KEY, DEFAULT_STATE } from '../../types/internal';
 
-declare type  reducerFn<ST> = (state: ST, payload: any) => ST;
 
 export class Reducer<StateType, ST = MapState<StateType>> implements IReducer<StateType, ST> {
     public store: IStore;
     public defaultState: ST;
 
-    private reducerMethods: Map<string | symbol, reducerFn<ST>>;
+    private reducerMethods: Map<string | symbol, ReducerMethod<ST>>;
 
     /* Only type this - don't set the value, the decorators are applied to this.prototype */
-    public [REDUCER_KEY]: Map< string | symbol, reducerFn<ST>>;
+    public [REDUCER_KEY]: Map< string | symbol, ReducerMethod<ST>>;
     public [DEFAULT_STATE]: ST;
 
     constructor(store: IStore, defaultState?: ST) {
@@ -21,13 +20,13 @@ export class Reducer<StateType, ST = MapState<StateType>> implements IReducer<St
         this.reducerMethods = new Map();
 
         if (this[REDUCER_KEY] && this[REDUCER_KEY].size) {
-            this[REDUCER_KEY].forEach((v: reducerFn<ST>, k: string | symbol) => {
+            this[REDUCER_KEY].forEach((v: ReducerMethod<ST>, k: string | symbol) => {
                 this.register(k, v);
             });
         }
     }
 
-    public register(key: string | symbol, fn: reducerFn<ST>) {
+    public register(key: string | symbol, fn: ReducerMethod<ST>) {
         this.reducerMethods.set(key, fn);
     }
 

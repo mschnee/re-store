@@ -17,6 +17,8 @@ export interface IReducer<T, ST = MapState<T>> {
     reduce(previousState: ST, action: Action): ST;
 }
 
+export declare type ReducerMethod<ST> = (state: ST, payload: any) => ST;
+
 export declare type ReducerConstructor<T, ST = MapState<T>> = new<T> (store: IStore, defaultState?: ST) => IReducer<T, ST>;
 
 export declare type DispatchKey = string | symbol;
