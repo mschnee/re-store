@@ -39,11 +39,19 @@ export default class Store implements IStore {
         this.useRemoteDevtools = options && !!options.useRemoteDevtools;
     }
 
-    public registerReducer<T>(name: string | symbol, reducerClass: ReducerConstructor<T>) {
-        const nReducer = new reducerClass(this);
+    public registerReducer<T>(name: string | symbol, reducerClass: ReducerConstructor<T> | any) {
+        try  {
+            const nReducer = new reducerClass(this);
 
-        if (!this.reducerObjects.has(name)) {
-            this.reducerObjects.set(name, nReducer);
+            if (nReducer && nReducer.reduce && typeof nReducer.reduce === 'function') {
+                if (!this.reducerObjects.has(name)) {
+                    this.reducerObjects.set(name, nReducer);
+                }
+            } else {
+
+            }
+        } catch (e) {
+            console.error('re-store: reducer registered with \'', name, '\' did not construct');
         }
     }
 
@@ -88,7 +96,20 @@ export default class Store implements IStore {
 
         while (!entry.done) {
             const [key, reducer] = entry.value;
-            nextState = nextState.updateIn([key], (v) => reducer.reduce(v, action));
+            nextState = nextState.updateIn([key], (v) => {
+                try {
+                    return reducer.reduce(v, action);
+                } catch (e) {
+                    if (this.isDev) {
+                        console.error('Exception caught in Store.reduce', {
+                            error: e,
+                            key,
+                            type: action.type
+                        });
+                    }
+                    return v;
+                }
+            });
             entry = keyIterator.next();
         }
 

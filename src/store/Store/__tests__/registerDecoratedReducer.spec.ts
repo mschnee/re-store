@@ -19,7 +19,7 @@ class TestReducer {
 
 test('Store works with a class decorated with @ReducerClass', () => {
     const s = new Store();
-    s.registerReducer('test', TestReducer as any);
+    s.registerReducer('test', TestReducer);
     s.dispatch('increment');
     expect(s.getState('test')).toBeTruthy();
     expect(s.getState('test').get('num')).toBe(26);
