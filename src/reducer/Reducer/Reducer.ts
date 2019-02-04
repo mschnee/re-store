@@ -17,7 +17,7 @@ export class Reducer<StateType, ST = MapState<StateType>> implements IReducer<St
 
     constructor(store: IStore, defaultState?: ST) {
         this.store = store;
-        this.defaultState = defaultState || ImmutableMap({}) as any; // todo: this might be bad :/
+        this.defaultState = defaultState || null; // todo: this might be bad :/
         this.reducerMethods = new Map();
 
         if (this[REDUCER_KEY] && this[REDUCER_KEY].size) {

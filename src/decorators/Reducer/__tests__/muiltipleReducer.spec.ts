@@ -41,5 +41,5 @@ test('Two BaseReducer subclasses with decoration do not share the decorators', (
     expect(twoInitialState.get('val')).toBe('a');
 
     const oneImpossibleState =  one.reduce(null, {type: 'append', payload: null});
-    expect(oneImpossibleState.get('val')).toBeUndefined();
+    expect(oneImpossibleState).toBeNull();
 })
