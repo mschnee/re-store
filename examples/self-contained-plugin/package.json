@@ -1,0 +1,36 @@
+{
+  "name": "self-contained-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "build:server": "tsc -P ./server/tsconfig.json",
+    "build:client": "parcel build ./client/client.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "redux": "*",
+    "transit-immutable-js": "*",
+    "transit-js": "*",
+    "ts-node": "*",
+    "re-store": "file:../../../re-store"
+  },
+  "devDependencies": {
+    "@types/node": "*",
+    "express": "*",
+    "parcel": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-redux": "*",
+    "styled-components": "^4.1.3",
+    "ts-loader": "^5.3.3",
+    "typescript": "*",
+    "webpack": "^4.29.1",
+    "webpack-cli": "^3.2.1"
+  }
+}

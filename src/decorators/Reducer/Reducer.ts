@@ -1,7 +1,7 @@
 
 import { REDUCER_KEY } from '../../types/internal';
 
-export default function Reducer<State>(reducerKey: string | symbol) {
+export default function Reducer(reducerKey: string | symbol) {
     return function(target: any, key: string | symbol, descriptor: PropertyDescriptor) {
         if( descriptor === undefined) {
             descriptor = Object.getOwnPropertyDescriptor(target, key);

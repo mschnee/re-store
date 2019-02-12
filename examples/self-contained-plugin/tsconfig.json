@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "lib":[
+            "es2018",
+            "dom"
+        ],
+        "outDir": "../dist/server",
+        "sourceMap": true,
+        "typeRoots": [
+            "../../dist/typings"
+        ],
+        "experimentalDecorators": true,
+        "jsx": "react"
+    }
+}

@@ -32,7 +32,7 @@ export interface StoreOptions {
 }
 
 export interface IStore {
-    registerReducer<T>(name: string | symbol, reducerClass: ReducerConstructor<T>): void;
+    registerReducer<T>(name: string | symbol, reducerClass: ReducerConstructor<T> | any): void;
     getState(name?: string): any;
     dispatch(type: DispatchKey, payload?: any): void;
     getReduxStore(): ReduxStore;
