@@ -1,0 +1,8 @@
+{
+  "require": ["source-map-support/register", "ts-node/register"],
+  "recursive": true,
+  "exit": true,
+  "reporter": "dot",
+  "spec": ["src/**/__tests__/*.spec.ts"],
+  "diff": true
+}
