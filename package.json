@@ -10,28 +10,31 @@
     "lint": "tslint -p .",
     "build": "rimraf ./dist && npm run build:esnext && npm run build:es6",
     "build:esnext": "tsc -p . --target esnext --outDir ./dist/esnext --module esnext --declaration --declarationDir ./dist/typings",
-    "build:es6": "tsc -p . --target es6 --outDir ./dist/es6 --module commonjs",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "build:es6": "tsc -p . --target es6 --outDir ./dist/es6 --module commonjs"
   },
   "author": "mschnee",
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/mocha": "^5.2.5",
-    "chai": "^4.1.2",
-    "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
-    "redux-devtools-extension": "^2.13.5",
-    "remote-redux-devtools": "^0.5.12",
-    "rimraf": "^2.6.2",
-    "snyk": "^1.89.0",
-    "ts-node": "^7.0.0",
-    "tslint": "^5.11.0",
-    "typescript": "^2.9.2"
+    "@types/chai": "^4.2.8",
+    "@types/mocha": "^7.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-eslint-plugin": "^2.2.1",
+    "eslint-plugin-mocha": "^6.2.2",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "redux-devtools-extension": "^2.13.8",
+    "remote-redux-devtools": "^0.5.16",
+    "rimraf": "^3.0.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
   },
   "dependencies": {
-    "immutable": "^3.8.2",
-    "redux": "^4.0.0"
+    "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.15",
+    "redux": "^4.0.5"
   }
 }
