@@ -7,7 +7,7 @@
   "typings": "dist/typings/index.d.ts",
   "scripts": {
     "test": "nyc mocha",
-    "lint": "tslint -p .",
+    "lint": "eslint .",
     "build": "rimraf ./dist && npm run build:esnext && npm run build:es6",
     "build:esnext": "tsc -p . --target esnext --outDir ./dist/esnext --module esnext --declaration --declarationDir ./dist/typings",
     "build:es6": "tsc -p . --target es6 --outDir ./dist/es6 --module commonjs"
