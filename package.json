@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "build": "rimraf ./dist && npm run build:esnext && npm run build:es6",
     "build:esnext": "tsc -p . --target esnext --outDir ./dist/esnext --module esnext --declaration --declarationDir ./dist/typings",
-    "build:es6": "tsc -p . --target es6 --outDir ./dist/es6 --module commonjs"
+    "build:es6": "tsc -p . --target es6 --outDir ./dist/es6 --module commonjs",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "mschnee",
   "license": "MIT",
@@ -35,6 +37,8 @@
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
-    "redux": "^4.0.5"
-  }
+    "redux": "^4.0.5",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
