@@ -24,7 +24,7 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-eslint-plugin": "^2.2.1",
     "eslint-plugin-mocha": "^6.2.2",
-    "mocha": "^7.0.1",
+    "mocha": "^10.2.0",
     "nyc": "^15.0.0",
     "redux-devtools-extension": "^2.13.8",
     "remote-redux-devtools": "^0.5.16",
